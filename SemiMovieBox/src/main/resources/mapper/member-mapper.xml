@@ -36,10 +36,12 @@
 	            EMAIL,	
 	            PHONE,	
 	            ADDRESS,	
-	            ENROLL_DATE enrollDate,	
+	            ENROLL_DATE,	
 	            STATUS,	
 	            PRIVILEGE,	
-	            LOCATION_NAME locationName
+	            LOCATION_NAME,
+	            GENRE_CODE,
+	            GENRE_NAME
 	   	   FROM
 	            TB_MEMBER
 	       JOIN

@@ -1,9 +1,9 @@
-package com.kh.spring.member.model.dao;
+package com.kh.moviebox.member.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.kh.spring.member.model.vo.Member;
+import com.kh.moviebox.member.model.vo.Member;
 
 @Repository // 저장소 관련된 작업(영성속)을 처리하겠다는 뜻
 public class MemberRepository {

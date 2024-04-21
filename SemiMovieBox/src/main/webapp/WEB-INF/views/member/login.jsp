@@ -148,7 +148,7 @@
 </head>
 
 <body>
-	<jsp:include page="/views/common/header.jsp"></jsp:include>
+	<jsp:include page="../common/header.jsp"/>
 	<c:set var="path" value="${ pageContext.request.contextPath }"/>
 	
     <div class="content">
@@ -156,7 +156,7 @@
             <div class="title-content"><span class="tit">로그인</span></div>
         </div>
         <div id="input-list">
-            <form action="${ path }/login.me" method="post">
+            <form action="login.member" method="post">
                 <div class="inputdiv">
                     <span class="input-span">아이디</span><br>
                     <input type="text" class="input-text" name="memberId" placeholder="아이디" required>
@@ -191,7 +191,7 @@
         </div>
     </div>
 
-<jsp:include page="/views/common/footer.jsp" />
+<jsp:include page="../common/footer.jsp" />
 
 
 </body>

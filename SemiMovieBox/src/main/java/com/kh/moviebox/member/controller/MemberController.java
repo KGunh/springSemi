@@ -19,6 +19,10 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder; 
 	
+	@RequestMapping("loginForm.member")
+	public String loginForm() {
+		return "member/login";
+	}
 	
 	@RequestMapping("login.member")
 	public ModelAndView login(Member member, HttpSession session,ModelAndView mv) {
@@ -33,7 +37,7 @@ public class MemberController {
 		// Member loginUser의 userPwd필드 : DB에 ㅇ기록된 암호화된 비밀번호
 		// 암호문에 포함되어있는 버전과 반복횟수와 소금값을 가지고 인자로 전달된 평문을 다시 암호화를 거쳐
 		// 두 번째 인자로 전달된 암호문과 같은지 다른지를 비교한 결과값을 반환
-		if(loginUser != null && bcryptPasswordEncoder.matches(member.getMemberPwd(), loginUser.getUserPwd())) {
+		if(loginUser != null && bcryptPasswordEncoder.matches(member.getMemberPwd(), loginUser.getMemberPwd())) {
 			
 			session.setAttribute("loginUser", loginUser);
 			mv.setViewName("redirect:/");
@@ -86,9 +90,9 @@ public class MemberController {
 		
 		// System.out.println("평문 : " + member.getUserPwd());
 		// 암호화작업(암호문을 만들어내는 과정)
-		String encPwd = bcryptPasswordEncoder.encode(member.getUserPwd());
+		String encPwd = bcryptPasswordEncoder.encode(member.getMemberPwd());
 		// System.out.println("암호문 : " + encPwd);
-		member.setUserPwd(encPwd);
+		member.setMemberPwd(encPwd);
 		
 		
 		

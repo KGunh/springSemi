@@ -191,7 +191,7 @@
 				<c:choose>
 					<c:when test="${ loginUser eq null }">
 						<a href="${ sessionScope.path }/insertForm.me" class="member">회원가입</a>
-	                	<a href="${ sessionScope.path }/loginForm.me" class="member">로그인</a>
+	                	<a href="loginForm.member" class="member">로그인</a>
                 	</c:when>
                 	<c:otherwise>
                         <c:if test="${ loginUser.privilege == 'Y'}">
