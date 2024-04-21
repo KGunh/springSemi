@@ -362,7 +362,7 @@
 	
 
 
-	<jsp:include page="/views/common/header.jsp"></jsp:include>
+	<jsp:include page="../common/header.jsp"></jsp:include>
 	
 	<c:set var="path" value="${ pageContext.request.contextPath }"/>
 	<div id="info-header">
@@ -376,7 +376,7 @@
                     <a href="#" class="info-my">회원정보</a>
                 </li>
                 <li id="info-navi-second">
-                    <a href="${ path }/resList.me" class="info-list">예매내역</a>
+                    <a href="resList.member" class="info-list">예매내역</a>
                 </li>
             </ul>
         </div>
@@ -413,7 +413,7 @@
                     	<c:when test="${!empty sessionScope.loginUser.genreList }">
                     	
                     		<c:forEach var="genre" items="${ sessionScope.loginUser.genreList }">
-                    			${ genre.genreCode }
+                    			${ genre.genreName }
                     		</c:forEach>
                     	</c:when>
                     </c:choose>
@@ -433,7 +433,7 @@
             		<h5 align="center">고객님의 최근 예매 내역이 존재하지 않습니다.</h5>
             	</c:when>
             	<c:otherwise>
-            		<div class="history-area-image"><img id="poster" src="${ path }/${ requestScope.movieList[0].filePath }/${ requestScope.movieList[0].changeName}"></div>
+            		<div class="history-area-image"><img id="poster" src="${ path }/${ requestScope.list[0].attachment.filePath }/${ requestScope.list[0].attachment.changeName}"></div>
                 		<div class="history-area-list">
                 			
 		                    <div>영화&emsp;${ requestScope.list[0].movieTitle }</div>
@@ -557,6 +557,6 @@
     </div>
 		</c:otherwise>
 	</c:choose>
-	<jsp:include page="/views/common/footer.jsp" />
+	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

@@ -190,14 +190,14 @@
 				
 				<c:choose>
 					<c:when test="${ loginUser eq null }">
-						<a href="${ sessionScope.path }/insertForm.me" class="member">회원가입</a>
+						<a href="enrollForm.member" class="member">회원가입</a>
 	                	<a href="loginForm.member" class="member">로그인</a>
                 	</c:when>
                 	<c:otherwise>
                         <c:if test="${ loginUser.privilege == 'Y'}">
                             <a href="${ sessionScope.path }/adminMain.me" class="member">관리자 기능</a>
                         </c:if>
-                            <a href="${ sessionScope.path }/logout.me" class="member">로그아웃</a>
+                            <a href="logout.member" class="member">로그아웃</a>
                     </c:otherwise>
 
 				</c:choose>
@@ -217,7 +217,7 @@
                     	<c:choose>
 	                    	<c:when test="${ loginUser eq null }">
 	                        
-	                        	<a class="nav-link" onclick="nologin();" href="${ sessionScope.path }/loginForm.me"><span>예매</span></a>
+	                        	<a class="nav-link" onclick="nologin();" href="loginForm.member"><span>예매</span></a>
 	                        
 	                        </c:when>
 							<c:otherwise>                        
@@ -244,10 +244,10 @@
        					
        					<c:choose>
 							<c:when test="${ loginUser eq null }">       					
-	                        	<a class="nav-link" onclick="nologin();" href="${ path }/loginForm.me"><span>마이페이지</span></a>
+	                        	<a class="nav-link" onclick="nologin();" href="loginForm.member"><span>마이페이지</span></a>
 							</c:when>
 							<c:otherwise>
-	                        	<a class="nav-link" href="${ path }/mypage.me"><span>마이페이지</span></a>
+	                        	<a class="nav-link" href="myPage.member"><span>마이페이지</span></a>
 	                        </c:otherwise>
                         </c:choose>
                         

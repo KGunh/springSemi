@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.Date,java.text.SimpleDateFormat,com.kh.reservation.model.vo.Seat,com.kh.common.model.vo.Price,java.util.ArrayList,com.kh.member.model.vo.MemberGenre,java.util.List,com.kh.common.model.vo.Reservation,com.kh.movie.model.vo.Movie"%>
+    pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -194,7 +194,7 @@
     </style>    
 </head>
 <body>
-	<jsp:include page="/views/common/header.jsp"></jsp:include>
+	<jsp:include page="../common/header.jsp"/>
 	
 
 	
@@ -215,7 +215,7 @@
             <div id="info-header-navi">
                 <ul class="info-navi">
                     <li id="info-navi-first">
-                        <a href="${ path }/mypage.me" class="info-my">회원정보</a>
+                        <a href="myPage.member" class="info-my">회원정보</a>
                     </li>
                     <li id="info-navi-second">
                         <a href="#" class="info-list">예매내역</a>
@@ -237,7 +237,7 @@
         		<c:forEach var="i" begin="0" end="${ list.size()-1}">
         			<div id="reservationList-content">
         				<div class="res-img">
-        					<div><img id="poster" src="${ path }/${ movieList[i].filePath }/${ movieList[i].changeName }" alt=""></div>
+        					<div><img id="poster" src="${ path }/${ requestScope.list[0].attachment.filePath }/${ requestScope.list[0].attachment.changeName}"alt=""></div>
         				</div>
         				<div class="res-content">
         					<div>
@@ -366,6 +366,6 @@
 		})
 					
 				</script>
-	<jsp:include page="/views/common/footer.jsp" />
+	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

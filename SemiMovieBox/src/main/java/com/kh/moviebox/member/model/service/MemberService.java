@@ -1,6 +1,9 @@
 package com.kh.moviebox.member.model.service;
 
+import java.util.List;
+
 import com.kh.moviebox.member.model.vo.Member;
+import com.kh.moviebox.reservation.model.vo.Reservation;
 
 public interface MemberService {
 	
@@ -13,7 +16,7 @@ public interface MemberService {
 	// 회원탈퇴(UPDATE)
 	int delete(Member member);
 	// ---------------------------------
-
+	List<Reservation> myPagePrint(Member member);
 	// 아이디 중복체크
 
 	// ---------------------------------
