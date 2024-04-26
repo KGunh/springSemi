@@ -116,7 +116,7 @@
 </head>
 
 <body>
-	<jsp:include page="/views/common/header.jsp"></jsp:include>
+	<jsp:include page="../common/header.jsp"/>
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
     <div class="content">
@@ -150,7 +150,7 @@
         </div>
     </div>
     
-    <jsp:include page="/views/common/footer.jsp" />
+    <jsp:include page="../common/footer.jsp" />
 
 
 

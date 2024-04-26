@@ -158,7 +158,7 @@
 
 <body>
 
-	<jsp:include page="/views/common/header.jsp"></jsp:include>
+	<jsp:include page="../common/header.jsp"/>
 	
     <div class="content">
         <div class="title-area">
@@ -190,7 +190,7 @@
 
 
 
-<jsp:include page="/views/common/footer.jsp" />
+<jsp:include page="../common/footer.jsp" />
 </body>
 
 </html>

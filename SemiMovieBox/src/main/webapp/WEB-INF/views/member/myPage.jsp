@@ -473,7 +473,6 @@
                     		</c:otherwise>
                     		
                     		</c:choose>
-                    		${ boardTitle }
                     		
 
                     </div>

@@ -69,9 +69,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping("insert.member")
-	public ModelAndView insertMember(Member member,@RequestParam(required = false) String[] genres, ModelAndView mv,HttpSession session) {
+	public ModelAndView insertMember(Member member,String[] genres, ModelAndView mv,HttpSession session) {
 		
-		List<Genre> genreList = new ArrayList<>();
+		List<Genre> genreList = new ArrayList();
 		if (genres != null) {
 		    for (int i = 0; i < genres.length; i++) {
 		        Genre g = new Genre();
@@ -149,5 +149,5 @@ public class MemberController {
 		
 		
 	}
-	
+
 }

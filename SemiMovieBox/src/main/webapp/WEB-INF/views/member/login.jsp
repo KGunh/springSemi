@@ -183,7 +183,7 @@
         		
         		<div class="inputdiv colorWhite" style="height: 50px;">
             		<div class="regis">MOVIE BOX 회원이 아니신가요?</div>
-            		<div class="register" ><a href="${ path }/insertForm.me" class="find_text">회원가입하기</a></div>
+            		<div class="register" ><a href="insertForm.member" class="find_text">회원가입하기</a></div>
         		</div>
 
             </form>

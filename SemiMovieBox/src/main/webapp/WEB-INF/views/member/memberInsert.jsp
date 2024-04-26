@@ -322,27 +322,27 @@
 					<div class="checkbox-div-input">
 						<div class="checkbox-div-label">
 							<label class="genre" for="horror">공포/스릴러</label>
-                            <input class="checkbox" type="checkbox" name="genres" value="공포/스릴러" id="horror">
+                            <input class="checkbox" type="checkbox" name="genreName" value="공포/스릴러" id="horror">
 						</div>
 						<div class="checkbox-div-label">
 							<label class="genre" for="romance">로맨스</label>
-                            <input class="checkbox" type="checkbox" name="genres" value="로맨스" id="romance">
+                            <input class="checkbox" type="checkbox" name="genreName" value="로맨스" id="romance">
 						</div>
 						<div class="checkbox-div-label">
 							<label class="genre" for="action">액션</label> 
-                            <input class="checkbox" type="checkbox" name="genres" value="액션" id="action">
+                            <input class="checkbox" type="checkbox" name="genreName" value="액션" id="action">
 						</div>
 						<div class="checkbox-div-label">
 							<label class="genre" for="comedy">코미디</label> 
-                            <input class="checkbox" type="checkbox" name="genres" value="코미디" id="comedy">
+                            <input class="checkbox" type="checkbox" name="genreName" value="코미디" id="comedy">
 						</div>
 						<div class="checkbox-div-label">
 							<label class="genre" for="anime">애니</label>
-                            <input class="checkbox" type="checkbox" name="genres" value="애니" id="anime">
+                            <input class="checkbox" type="checkbox" name="genreName" value="애니" id="anime">
 						</div>
 						<div class="checkbox-div-label">
 							<label class="genre" for="anime">판타지</label>
-                            <input class="checkbox" type="checkbox" name="genres" value="판타지" id="fantasy">
+                            <input class="checkbox" type="checkbox" name="genreName" value="판타지" id="fantasy">
 						</div>
 					</div>
 				</div>
