@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.moviebox.board.model.vo.Board;
 import com.kh.moviebox.member.model.vo.Member;
 import com.kh.moviebox.reservation.model.vo.Reservation;
 
@@ -20,5 +21,12 @@ public class MemberRepository {
 	}
 	public List<Reservation> myPagePrint(SqlSessionTemplate sqlSession,Member member) {
 		return sqlSession.selectList("memberMapper.myPagePrint", member);
+	}
+	
+	public List<Board> myPageBoardPrint(SqlSessionTemplate sqlSession, Member member) {
+		return sqlSession.selectList("memberMapper.myPageBoardPrint", member);
+	}
+	public int idCheck(SqlSessionTemplate sqlSession, String checkId) {
+		return sqlSession.selectOne("memberMapper.idCheck",checkId);
 	}
 }

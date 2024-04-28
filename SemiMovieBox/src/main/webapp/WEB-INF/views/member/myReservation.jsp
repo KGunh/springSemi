@@ -215,7 +215,7 @@
             <div id="info-header-navi">
                 <ul class="info-navi">
                     <li id="info-navi-first">
-                        <a href="myPage.member" class="info-my">회원정보</a>
+                        <a href="myPage" class="info-my">회원정보</a>
                     </li>
                     <li id="info-navi-second">
                         <a href="#" class="info-list">예매내역</a>

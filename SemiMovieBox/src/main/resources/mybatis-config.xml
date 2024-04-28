@@ -15,11 +15,16 @@
 		<typeAlias type="com.kh.moviebox.reservation.model.vo.Seat" alias="seat"/>
 		<typeAlias type="com.kh.moviebox.reservation.model.vo.Reservation" alias="reservation"/>
 		<typeAlias type="com.kh.moviebox.movie.model.vo.Movie" alias="movie"/>
+		<typeAlias type="com.kh.moviebox.board.model.vo.Board" alias="board"/>
+		<typeAlias type="com.kh.moviebox.common.model.vo.Location" alias="location"/>
+		<typeAlias type="com.kh.moviebox.theater.model.vo.Theater" alias="theater"/>
+		<typeAlias type="com.kh.moviebox.theater.model.vo.Screen" alias="screen"/>
 	</typeAliases>
 
 
 	<mappers>
 		<mapper resource="/mapper/member-mapper.xml"/>
+		<mapper resource="/mapper/admin-mapper.xml"/>
 	</mappers>
 	
 	<!-- 주의할 점 : 매퍼파일을 등록하기 위해서는 반드시 해당 결로에 파일이 존재해야하며 namespace속성값도 있어야함 -->

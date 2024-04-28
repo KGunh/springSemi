@@ -156,7 +156,7 @@
             <div class="title-content"><span class="tit">로그인</span></div>
         </div>
         <div id="input-list">
-            <form action="login.member" method="post">
+            <form action="${ path }/member" method="post">
                 <div class="inputdiv">
                     <span class="input-span">아이디</span><br>
                     <input type="text" class="input-text" name="memberId" placeholder="아이디" required>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adminMapper">
+	<resultMap type="location" id="locationResultSet">
+		<result column="LOCATION_CODE" property="locationCode"/>
+		<result column="LOCATION_NAME" property="locationName"/>
+	</resultMap>
+	
+	<resultMap type="theater" id="theaterResultSet">
+		<result column="THEATER_NO" property="theaterNo"/>
+		<result column="THEATER_NAME" property="theaterName"/>
+	</resultMap>
+	
+	<resultMap type="screen" id="screenResultSet">
+		<result column="SCREEN_NO" property="screenNo"/>
+		<result column="THEATER_NO" property="theaterNo"/>
+		<result column="MOVIE_NO" property="movieNo"/>
+		<result column="MOVIE_TITLE" property="movieTitle"/>
+		<result column="SCREEN_NAME" property="screenName"/>
+		<result column="WATCH_DATE" property="watchDate"/>
+	</resultMap>
+	
+	<resultMap type="movie" id="movieResultSet">
+		<result column="MOVIE_NO" property="movieNo"/>
+		<result column="MOVIE_TITLE" property="movieTitle"/>
+	</resultMap>
+	<select id="locationList"  resultMap="locationResultSet">
+		SELECT
+			   LOCATION_NAME,
+			   LOCATION_CODE
+		  FROM
+		 	   TB_LOCATION
+	</select>
+	
+	<select id="selectTheaterList" resultMap="theaterResultSet">
+		SELECT
+		       THEATER_NO,
+		       THEATER_NAME
+		  FROM
+		       TB_THEATER
+         WHERE
+         	   LOCATION_CODE = #{locationCode}
+		 ORDER
+		    BY
+		       THEATER_NO ASC
+	</select>
+	
+	<select id="movieList" resultMap="movieResultSet">
+		SELECT
+			   MOVIE_NO,
+			   MOVIE_TITLE
+		  FROM
+		  	   TB_MOVIE
+		 WHERE
+		 	   STATUS = 'Y'
+	</select>
+	
+	<select id="detailTheater" parameterType="screen" resultMap="screenResultSet">
+		SELECT
+			   SCREEN_NO,
+			   THEATER_NO,
+	       	   MOVIE_NO,
+	           MOVIE_TITLE,
+	           SCREEN_NAME,
+	           TO_CHAR(WATCH_DATE,'HH24:MI:SS') AS WATCH_DATE
+	      FROM
+	           TB_SCREEN
+	      JOIN
+	           TB_MOVIE USING(MOVIE_NO)
+	     WHERE
+	           THEATER_NO = #{theaterNo} AND TO_CHAR(WATCH_DATE,'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{watchDate},'YYYY-MM-DD'),'YYYY-MM-DD')
+	       AND STATUS = 'Y'    
+		 ORDER
+   	    	BY SCREEN_NAME,WATCH_DATE
+	</select>
+	
+	<insert id="insertScreen" parameterType="screen">
+		INSERT
+	      INTO
+	      	   TB_SCREEN
+	    VALUES(SEQ_SCRNO.NEXTVAL,#{theaterNo},#{movieNo},TO_DATE(#{watchDate},'YYYY-MM-DD/HH24:MI'),#{screenName})
+	
+	</insert>
+	
+	<select id="insertCheck" parameterType="screen" resultType="_int">
+		SELECT
+			   COUNT(*)
+		  FROM
+		  	   TB_SCREEN
+		 WHERE
+		 	   THEATER_NO = #{theaterNo}
+		   AND
+		   	   TO_CHAR(WATCH_DATE,'YYYY-MM-DD/HH24:MI') = #{watchDate}
+		   AND
+		   	   SCREEN_NAME = #{screenName}
+	</select>
+</mapper>

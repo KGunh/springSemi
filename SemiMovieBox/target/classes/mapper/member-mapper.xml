@@ -28,7 +28,45 @@
 		<collection resultMap="genreListMap" property="genreList" />
 	</resultMap>
 		
+	<resultMap type="seat" id="seatResultSet">
+		<result column="SEAT_NO" property="seatNo" />
+	</resultMap>
 	
+	<resultMap type="attachment" id="attachmentResultSet">
+		<result column="CHANGE_NAME" property="changeName" />
+		<result column="FILE_PATH" property="filePath" />
+	</resultMap>
+	
+	<resultMap type="price" id="priceResultSet">
+		<result column="GRADE_1_COUNT" property="studentCount" />
+		<result column="GRADE_2_COUNT" property="commonCount" />
+		<result column="STUDENT_PRICE" property="studentPrice" />
+		<result column="COMMON_PRICE" property="commonPrice" />
+		<result column="TOTAL_PRICE" property="totalPrice" />
+	</resultMap>
+	<resultMap type="reservation" id="reservationResultSet">
+		<result column="TICKET_NO" property="ticketNo" />
+		<result column="MEMBER_NO" property="memberNo" />
+		<result column="SCREEN_NO" property="screenNo" />
+		<result column="SCREEN_NAME" property="screenName" />
+		<result column="MOVIE_TITLE" property="movieTitle" />
+		<result column="RUNNING_TIME" property="runningTime" />
+		<result column="THEATER_NAME" property="theaterName" />
+		<result column="WATCH_DATE" property="watchDate" />
+		<result column="STATUS" property="status" />
+		<result column="RESERVATION_DATE" property="reservationDate" />
+		<collection resultMap="priceResultSet" property="price" />
+		<collection resultMap="attachmentResultSet" property="attachment" />
+		<collection resultMap="seatResultSet" property="seatList" />
+		
+	</resultMap>
+	
+	<resultMap type="board" id="boardResultSet">
+		<result column="BOARD_NO" property="boardNo"/>
+		<result column="BOARD_TITLE" property="boardTitle"/>
+		<result column="CREATE_DATE" property="createDate"/>
+		<result column="ANSWER_NO" property="answerNo"/>
+	</resultMap>
 	<select id="login" parameterType="member" resultMap="meberResultSet">
 		SELECT
 	            MEMBER_NO,
@@ -87,38 +125,6 @@
 		  FROM
 		  	   DUAL
 	</insert>
-	<resultMap type="seat" id="seatResultSet">
-		<result column="SEAT_NO" property="seatNo" />
-	</resultMap>
-	
-	<resultMap type="attachment" id="attachmentResultSet">
-		<result column="CHANGE_NAME" property="changeName" />
-		<result column="FILE_PATH" property="filePath" />
-	</resultMap>
-	
-	<resultMap type="price" id="priceResultSet">
-		<result column="GRADE_1_COUNT" property="studentCount" />
-		<result column="GRADE_2_COUNT" property="commonCount" />
-		<result column="STUDENT_PRICE" property="studentPrice" />
-		<result column="COMMON_PRICE" property="commonPrice" />
-		<result column="TOTAL_PRICE" property="totalPrice" />
-	</resultMap>
-	<resultMap type="reservation" id="reservationResultSet">
-		<result column="TICKET_NO" property="ticketNo" />
-		<result column="MEMBER_NO" property="memberNo" />
-		<result column="SCREEN_NO" property="screenNo" />
-		<result column="SCREEN_NAME" property="screenName" />
-		<result column="MOVIE_TITLE" property="movieTitle" />
-		<result column="RUNNING_TIME" property="runningTime" />
-		<result column="THEATER_NAME" property="theaterName" />
-		<result column="WATCH_DATE" property="watchDate" />
-		<result column="STATUS" property="status" />
-		<result column="RESERVATION_DATE" property="reservationDate" />
-		<collection resultMap="priceResultSet" property="price" />
-		<collection resultMap="attachmentResultSet" property="attachment" />
-		<collection resultMap="seatResultSet" property="seatList" />
-		
-	</resultMap>
 	
 	<select id="myPagePrint" parameterType="member" resultMap="reservationResultSet">
 		SELECT
@@ -195,4 +201,33 @@
  	  			     BY
  	  	    				TICKET_NO DESC
 	</select>
+	
+	<select id="myPageBoardPrint" parameterType="member" resultMap="boardResultSet">
+		SELECT
+      	   BOARD_NO,
+       	   BOARD_TITLE,
+           TO_CHAR(TB_BOARD.CREATE_DATE,'YYYY-MM-DD') AS CREATE_DATE,
+           ANSWER_NO
+      FROM
+       	   TB_BOARD
+      LEFT
+      JOIN
+           TB_ANSWER USING(BOARD_NO)
+     WHERE
+           MEMBER_NO = #{memberNo}
+     ORDER
+     	BY
+     	   BOARD_NO DESC
+	</select>
+	
+	<select id="idCheck" parameterType="string" resultType="_int">
+		SELECT
+			   COUNT(*)
+		  FROM
+		  	   TB_MEMBER
+		 WHERE
+		 	   MEMBER_ID = #{memberId}
+	
+	</select>
+	
 </mapper>

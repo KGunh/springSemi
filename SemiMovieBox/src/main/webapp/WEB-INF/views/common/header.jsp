@@ -190,14 +190,14 @@
 				
 				<c:choose>
 					<c:when test="${ loginUser eq null }">
-						<a href="enrollForm.member" class="member">회원가입</a>
-	                	<a href="loginForm.member" class="member">로그인</a>
+						<a href="member/enrollForm" class="member">회원가입</a>
+	                	<a href="member/loginForm" class="member">로그인</a>
                 	</c:when>
                 	<c:otherwise>
                         <c:if test="${ loginUser.privilege == 'Y'}">
-                            <a href="${ sessionScope.path }/adminMain.me" class="member">관리자 기능</a>
+                            <a href="admin/screen" class="member">관리자 기능</a>
                         </c:if>
-                            <a href="logout.member" class="member">로그아웃</a>
+                            <a href="member/logout" class="member">로그아웃</a>
                     </c:otherwise>
 
 				</c:choose>
@@ -217,7 +217,7 @@
                     	<c:choose>
 	                    	<c:when test="${ loginUser eq null }">
 	                        
-	                        	<a class="nav-link" onclick="nologin();" href="loginForm.member"><span>예매</span></a>
+	                        	<a class="nav-link" onclick="nologin();" href="member/loginForm"><span>예매</span></a>
 	                        
 	                        </c:when>
 							<c:otherwise>                        
@@ -247,7 +247,7 @@
 	                        	<a class="nav-link" onclick="nologin();" href="loginForm.member"><span>마이페이지</span></a>
 							</c:when>
 							<c:otherwise>
-	                        	<a class="nav-link" href="myPage.member"><span>마이페이지</span></a>
+	                        	<a class="nav-link" href="member/myPage"><span>마이페이지</span></a>
 	                        </c:otherwise>
                         </c:choose>
                         

@@ -373,7 +373,7 @@
             
             <ul class="info-navi">
                 <li id="info-navi-first">
-                    <a href="#" class="info-my">회원정보</a>
+                    <a href="mypage" class="info-my">회원정보</a>
                 </li>
                 <li id="info-navi-second">
                     <a href="resList.member" class="info-list">예매내역</a>
@@ -473,13 +473,13 @@
                     		</c:otherwise>
                     		
                     		</c:choose>
-                    		
+                    		${ boardTitle }
 
                     </div>
                     <div id="QNA-createDate">${ requestScope.boardList[i].createDate }</div>
                     
                     <c:choose>
-                    	<c:when test="${empty requestScope.answerList }">
+                    	<c:when test="${empty boardList[i].answerNo }">
                     		<div id="QNA-yn">N</div>
                     	</c:when>
                     	<c:otherwise>
@@ -495,64 +495,8 @@
             	
             </div>
         </div>
-        <div class="mini-tit">MY 상품구매내역</div>
             
-        <div class="store-area">
-            <div class="store-area-list">
-                	<div class="store-img"></div>
-                	<div class="store-content">
-                	<c:choose>
-                		<c:when test="${ empty requestScope.orderList }">
-                			<h5 align="center">고객님의 최근 구매 내역이 존재하지 않습니다.</h5>
-                		</c:when>
-                		<c:otherwise>
-                			<table>
-                            <thead>
-                                <tr>
-                                    <th colspan="3">주문번호 ${ requestScope.orderList[0].orderNo }</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="menu">메뉴</td>
-                                    <c:choose>
-                                    	<c:when test="${ !empty requestScope.orderList[0].goodsList }">
-                                    		<c:forEach var='g' items="${ requestScope.orderList[0].goodsList }">
-                                    			<td class="menu">${ g.goodsName }</td>
-                                    		</c:forEach>
-                                    	</c:when>
-                                    </c:choose>
-                                    
-                                </tr>
-                                <tr>
-                                    <td class="menu">개수</td>
-                                   <c:choose>
-                                    	<c:when test="${ !empty requestScope.orderList[0].goodsList }">
-                                    		<c:forEach var='g' items="${ requestScope.orderList[0].goodsList }">
-                                    			<td class="menu">${ g.qty }</td>
-                                    		</c:forEach>
-                                    	</c:when>
-                                    </c:choose>
-                                </tr>
-                                <tr>
-                                    <td class="menu">비용</td>
-                                    <c:choose>
-                                    	<c:when test="${ !empty requestScope.orderList[0].goodsList }">
-                                    		<c:forEach var='g' items="${ requestScope.orderList[0].goodsList }">
-                                    			<td class="menu">${ g.goodsPrice }</td>
-                                    		</c:forEach>
-                                    	</c:when>
-                                    </c:choose>
-                                </tr>
-                            </tbody>
-                        </table>
-                		</c:otherwise>
-                	</c:choose>
-                	
-                    </div>
-            </div>
-            
-        </div>
+        
     </div>
 		</c:otherwise>
 	</c:choose>

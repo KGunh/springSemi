@@ -10,8 +10,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.moviebox.common.model.vo.Genre;
@@ -20,6 +21,7 @@ import com.kh.moviebox.member.model.vo.Member;
 import com.kh.moviebox.reservation.model.vo.Reservation;
 
 @Controller
+@RequestMapping(value="member")
 public class MemberController {
 
 	@Autowired
@@ -28,12 +30,12 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder; 
 	
-	@RequestMapping("loginForm.member")
+	@RequestMapping("loginForm")
 	public String loginForm() {
 		return "member/login";
 	}
 	
-	@RequestMapping("login.member")
+	@PostMapping()
 	public ModelAndView login(Member member, HttpSession session,ModelAndView mv) {
 
 
@@ -51,8 +53,8 @@ public class MemberController {
 		}
 		return mv;
 	}
-	
-	@RequestMapping("logout.member")
+
+	@GetMapping("logout")
 	public ModelAndView logout(HttpSession session,ModelAndView mv) {
 		
 		session.removeAttribute("loginUser");
@@ -63,7 +65,7 @@ public class MemberController {
 	
 	
 
-	@RequestMapping("enrollForm.member")
+	@RequestMapping("enrollForm")
 	public String enrollForm() {
 		return "member/memberInsert";
 	}
@@ -94,7 +96,7 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping("myPage.member")
+	@RequestMapping("myPage")
 	public ModelAndView myPage(ModelAndView mv,HttpSession session) {
 		
 		Member loginUser = (Member)session.getAttribute("loginUser");
@@ -103,7 +105,7 @@ public class MemberController {
 			mv.setViewName("redirect:/");
 			return mv;
 		} else {
-			mv.addObject("list",memberService.myPagePrint(loginUser)).setViewName("member/myPage");;
+			mv.addObject("list",memberService.myPagePrint(loginUser)).addObject("boardList",memberService.myPageBoardPrint(loginUser)).setViewName("member/myPage");
 			return mv;
 		}
 		

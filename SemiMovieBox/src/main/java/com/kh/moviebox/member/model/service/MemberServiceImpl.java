@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.moviebox.board.model.vo.Board;
 import com.kh.moviebox.member.model.dao.MemberRepository;
 import com.kh.moviebox.member.model.vo.Member;
 import com.kh.moviebox.reservation.model.vo.Reservation;
@@ -48,6 +49,16 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int delete(Member member) {
 		return 0;
+	}
+
+	@Override
+	public List<Board> myPageBoardPrint(Member member) {
+		return memberRepository.myPageBoardPrint(sqlSession,member);
+	}
+
+	@Override
+	public int idCheck(String checkId) {
+		return memberRepository.idCheck(sqlSession,checkId);
 	}
 	
 }

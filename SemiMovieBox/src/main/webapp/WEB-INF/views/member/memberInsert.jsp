@@ -348,7 +348,6 @@
 				</div>
 				<div class="input-button">
 					<button type="button" id="insertMember" disabled > 가입하기</button>
-					<input type="submit" value="임시버튼">
 				</div>
 			</form>
 		</div>
@@ -387,7 +386,7 @@
 	        	$memberId.siblings('.input-bottom').html('');
 	        	
 				$.ajax({
-					url : 'idCheck.me',
+					url : 'idCheck',
 					data : {
 						checkId : $memberId.val()
 					},
